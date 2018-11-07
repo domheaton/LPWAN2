@@ -22,7 +22,7 @@
   window.onload = function () {
     var temperatureDataPoints = [{y : 0}];
     var humidityDataPoints = [{y: 0}];
-    var chart = new `CanvasJS`.Chart("chartContainer", {
+    var chart = new CanvasJS.Chart("chartContainer", {
       title : {
         text : "Sensor Data"
       },
