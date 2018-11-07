@@ -15,10 +15,6 @@
   var temperature = ["0"];
   var humidity = ["0"];
 
-  //dumb html elements and THEIR IDs
-  const preObject = document.getElementById('object');
-  const ulList = document.getElementById('list');
-
   window.onload = function () {
     var temperatureDataPoints = [{y : 0}];
     var humidityDataPoints = [{y: 0}];
