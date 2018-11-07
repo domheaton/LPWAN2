@@ -10,11 +10,11 @@
 #define FIREBASE_HOST "esp8266-sensordata.firebaseio.com"
 #define FIREBASE_AUTH "OBDCZYCOTqiB9vvnWse6Ewc1HZITysV4InL1EpHo"
 
-//const char* ssid = "NOWTV6AAD7";
-//const char* password = "LYYFLQBDDV";
+const char* ssid = "NOWTV6AAD7";
+const char* password = "LYYFLQBDDV";
 
-const char* ssid = "dhh1g15";
-const char* password = "123123123";
+//const char* ssid = "dhh1g15";
+//const char* password = "123123123";
 
 // Initialize DHT sensor.
 const int DHTPin = 5;
