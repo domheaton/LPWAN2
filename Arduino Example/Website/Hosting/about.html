@@ -17,11 +17,26 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-dark fixed-top navbar-dark bg-dark flex-md-nowrap p-0 shadow">
       <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="index.html">LPWAN2</a>
-      <ul class="navbar-nav px-3"></ul>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarIdentifier" aria-controls="navbarIdentifier" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarIdentifier">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About<span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+      </div>
     </nav>
 
+    <!-- Side Navigation Bar -->
     <div class="container-fluid">
       <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
