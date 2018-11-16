@@ -1,15 +1,20 @@
 (function(){
 
-  //initialise firebase
+  // Initialize Firebase
   var config = {
-    apiKey: "AIzaSyBBC9v49--edYcis4ye2vIswNZ0Gu3kE9k",
-    authDomain: "esp8266-sensordata.firebaseapp.com",
-    databaseURL: "https://esp8266-sensordata.firebaseio.com",
-    projectId: "esp8266-sensordata",
-    storageBucket: "esp8266-sensordata.appspot.com",
-    messagingSenderId: "397649331624"
+    apiKey: "AIzaSyAu-3f0gwQxpv7_xyisyGoBUtHymejxmcQ",
+    authDomain: "wireless-networks-lpwan2.firebaseapp.com",
+    databaseURL: "https://wireless-networks-lpwan2.firebaseio.com",
+    projectId: "wireless-networks-lpwan2",
+    storageBucket: "wireless-networks-lpwan2.appspot.com",
+    messagingSenderId: "868186919348"
   };
   firebase.initializeApp(config);
+
+  /*-------------------------------------------------------------------------*/
+  // ALL OF THE FOLLOWING NEEDS UPDATING TO FIND THE CORRECT DATA FROM FIREBASE
+  // CURRENTLY THE CODE BELOW WAS FOR GRAPHS IN THE ARDUINO EXAMPLE CODE
+  /*-------------------------------------------------------------------------*/
 
   // Record of temperature and humidity
   var temperature = ["0"];
