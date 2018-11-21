@@ -31,16 +31,16 @@
 // LoRaWAN NwkSKey, network session key
 // This is the default Semtech key, which is used by the prototype TTN
 // network initially.
-static const PROGMEM u1_t NWKSKEY[16] = { 0x2B, 0x7E, 0x15, 0x16, 0x28, 0xAE, 0xD2, 0xA6, 0xAB, 0xF7, 0x15, 0x88, 0x09, 0xCF, 0x4F, 0x3C };
+static const PROGMEM u1_t NWKSKEY[16] = { 0x84, 0x12, 0x76, 0xBF, 0x9E, 0x24, 0xC3, 0x0D, 0xF0, 0x04, 0x96, 0xAF, 0x5E, 0xEA, 0x3E, 0x43 };
 
 // LoRaWAN AppSKey, application session key
 // This is the default Semtech key, which is used by the prototype TTN
 // network initially.
-static const u1_t PROGMEM APPSKEY[16] = { 0x2B, 0x7E, 0x15, 0x16, 0x28, 0xAE, 0xD2, 0xA6, 0xAB, 0xF7, 0x15, 0x88, 0x09, 0xCF, 0x4F, 0x3C };
+static const u1_t PROGMEM APPSKEY[16] = { 0x18, 0xC8, 0x3A, 0x5A, 0x92, 0x8C, 0x6F, 0xB8, 0x27, 0xE6, 0x67, 0x3E, 0xB9, 0x1D, 0x91, 0xB1 };
 
 // LoRaWAN end-device address (DevAddr)
 // See http://thethingsnetwork.org/wiki/AddressSpace
-static const u4_t DEVADDR = 0x09984507 ; // <-- Change this address for every node!
+static const u4_t DEVADDR = 0x26011CD1 ; // <-- Change this address for every node!
 
 // These callbacks are only used in over-the-air activation, so they are
 // left empty here (we cannot leave them out completely unless
@@ -141,8 +141,12 @@ void do_send(osjob_t* j){
         Serial.println(F("OP_TXRXPEND, not sending"));
     } else {
         int chk = DHT.read11(DHT11_PIN);
-        delay(1000);
+        delay(1000); // some delay needed, likely much less than 1s.
         // Prepare upstream data transmission at the next possible time.
+        uint8_t temperature = (uint8_t) DHT.temperature;
+        uint8_t humidity = (uint8_t) DHT.humidity;
+        uint8_t sensorData[3] = {temperature, humidity, '\0'};
+        
         LMIC_setTxData2(1, mydata, sizeof(mydata)-1, 0);
         Serial.println(DHT.temperature);
         Serial.println(DHT.humidity);
