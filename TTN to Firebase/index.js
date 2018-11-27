@@ -12,7 +12,7 @@ var config = {
     storageBucket: "wireless-networks-lpwan2.appspot.com",
     messagingSenderId: "868186919348"
   };
-  
+
 firebase.initializeApp(config);
 
 var databaseRef = firebase.app().database().ref();
@@ -29,5 +29,3 @@ ttn.data(appID, accessKey)
     console.error("Error", error)
     process.exit(1)
   })
-  
-  
