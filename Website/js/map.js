@@ -4,15 +4,6 @@ Plotly.d3.csv('https://raw.githubusercontent.com/plotly/datasets/master/2014_us_
       return rows.map(function(row) { return row[key]; });
   }
 
-  // var cityName = unpack(rows, 'name'),
-  //     cityPop = unpack(rows, 'pop'),
-  //     cityLat = unpack(rows, 'lat'),
-  //     cityLon = unpack(rows, 'lon')
-
-  // var gatewayName = unpack(rows, 'id')
-  // var gatewayLatitude = unpack(rows, 'lat');
-  // var gatewayLongitude = unpack(rows, 'lon');
-
   //location: longitude, latitude, gtw_id
   //physics: 50.935033, -1.399582, eui-7276fffffe01028c
   //ecs: 50.937274, -1.397667, eui-b827ebfffeac4b12
