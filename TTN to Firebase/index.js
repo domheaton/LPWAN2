@@ -22,7 +22,8 @@ ttn.data(appID, accessKey)
     client.on("uplink", function (devID, payload) {
       console.log("Received uplink from ", devID)
       console.log(payload)
-	  databaseRef.push(payload)
+      databaseRef.child("fix/").set(payload);
+      databaseRef.push(payload);
     })
   })
   .catch(function (error) {
