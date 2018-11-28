@@ -83,22 +83,22 @@ function initMap()
     var physicsContent = '<div id="content">'+
             '<div id="siteNotice"> </div>'+
             '<h6 id="firstHeading" class="firstHeading">Physics Gateway <br></h6>' +
-            '<p> ID: ' + gateway1.id + '<br> Latitude: ' + gateway1.latitude + '<br> Longitude: ' + gateway1.longitude +'</p>'+'</div>';
+            '<p> ID: ' + gateway1.id + '<br> Latitude: ' + gateway1.latitude + '<br> Longitude: ' + gateway1.longitude + '<br> Most Recent RSSI: -' + gateway1.rssi + 'dB <br> Most Recent SNR: ' + gateway1.snr + '</p>'+'</div>';
 
     var ecsContent = '<div id="content">'+
             '<div id="siteNotice"> </div>'+
             '<h6 id="firstHeading" class="firstHeading">ECS Gateway <br></h6>' +
-            '<p> ID: ' + gateway2.id + '<br> Latitude: ' + gateway2.latitude + '<br> Longitude: ' + gateway2.longitude +'</p>'+'</div>';
+            '<p> ID: ' + gateway2.id + '<br> Latitude: ' + gateway2.latitude + '<br> Longitude: ' + gateway2.longitude + '<br> Most Recent RSSI: -' + gateway2.rssi + 'dB <br> Most Recent SNR: ' + gateway2.snr + '</p>'+'</div>';
 
     var building7_1Content = '<div id="content">'+
             '<div id="siteNotice"> </div>'+
             '<h6 id="firstHeading" class="firstHeading">Building 7 (1) Gateway <br></h6>' +
-            '<p> ID: ' + gateway3.id + '<br> Latitude: ' + gateway3.latitude + '<br> Longitude: ' + gateway3.longitude +'</p>'+'</div>';
+            '<p> ID: ' + gateway3.id + '<br> Latitude: ' + gateway3.latitude + '<br> Longitude: ' + gateway3.longitude + '<br> Most Recent RSSI: -' + gateway3.rssi + 'dB <br> Most Recent SNR: ' + gateway3.snr + '</p>'+'</div>';
 
     var building7_2Content = '<div id="content">'+
             '<div id="siteNotice"> </div>'+
             '<h6 id="firstHeading" class="firstHeading">Building 7 (2) Gateway <br></h6>' +
-            '<p> ID: ' + gateway4.id + '<br> Latitude: ' + gateway4.latitude + '<br> Longitude: ' + gateway4.longitude +'</p>'+'</div>';
+            '<p> ID: ' + gateway4.id + '<br> Latitude: ' + gateway4.latitude + '<br> Longitude: ' + gateway4.longitude + '<br> Most Recent RSSI: -' + gateway4.rssi + 'dB <br> Most Recent SNR: ' + gateway4.snr + '</p>'+'</div>';
 
     var physicsInfo = new google.maps.InfoWindow({
       content: physicsContent
