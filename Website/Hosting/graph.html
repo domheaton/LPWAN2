@@ -18,7 +18,7 @@
   <!-- CSS -->
   <link href="css/dashboard.css" rel="stylesheet">
   <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
 </head>
 
 <body>
@@ -36,6 +36,9 @@
         </li>
         <li class="nav-item active">
           <a class="nav-link" href="graph.html">&nbsp;<span data-feather="bar-chart-2"></span> Graphs <span class="sr-only">(current)</span></a>
+        </li>
+        <li>
+          <a class="nav-link" href="map.html">&nbsp;<span data-feather="map-pin"></span> Map</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="raw.html">&nbsp;<span data-feather="file-text"></span> Raw Data</a>
@@ -66,6 +69,12 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="map.html">
+              <span data-feather="map-pin"></span>
+              Map
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="raw.html">
               <span data-feather="file-text"></span>
               Raw Data
@@ -88,7 +97,13 @@
       <h1 class="h2">Graphs</h1>
     </div>
 
-    <div id = "chartContainer" style = "height: 300px; width: 100%;" />
+    <div><h6>Live readings from the sensors are shown in this graph below. As data is received the graph will update.</h6>
+      <div id="chartContainer" style = "height: 300px; width: 100%;" /></div>
+      <hr />
+    </div>
+    <div><h6>Live RSSI measurements from the gateways that received the transmitted packet of information from the arduino.</h6>
+    <div id="chartContainer2" style = "height: 300px; width: 100%;" /></div>
+    </div>
 
   </main>
 
@@ -106,7 +121,7 @@
   </script>
 
   <!-- Graphs -->
-  <script src="js/app.js"></script>
+  <script src="js/graph.js"></script>
   <script src="canvas/canvasjs.min.js"></script>
 </body>
 </html>
