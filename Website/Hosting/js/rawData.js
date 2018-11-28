@@ -1,3 +1,5 @@
+// Author: Dominic Heaton
+// LPWAN2 - University of Southampton
 (function(){
 
   // Initialize Firebase
@@ -20,7 +22,7 @@
   const firebaseRef = firebase.database().ref().child('fix');
   const firebasePayload = firebaseRef.child('payload_raw');
   const firebaseGateways = firebaseRef.child('metadata');
-  
+
   //display payload
   firebasePayload.on('value', snap => {
     payloadData.innerText = JSON.stringify(snap.val(), null, 3);

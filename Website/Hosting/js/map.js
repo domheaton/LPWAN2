@@ -1,3 +1,5 @@
+// Author: Dominic Heaton
+// LPWAN2 - University of Southampton
 var map;
 
 //Useful Identification Information
