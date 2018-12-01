@@ -1,3 +1,5 @@
+// Author: Dominic Heaton
+// LPWAN2 - University of Southampton
 (function(){
 
   // Initialize Firebase
@@ -12,29 +14,28 @@
   firebase.initializeApp(config);
 
   //dumb html elements and THEIR IDs
-  const rawObject = document.getElementById('payload_raw');
-  const dataObject = document.getElementById('payload_data');
-  const completeDataObject = document.getElementById('complete_data');
+  const payloadData = document.getElementById('payload_data');
+  const metaData = document.getElementById('meta_data');
+  const completeData = document.getElementById('complete_data');
 
-  // array to read in the raw payload for decoding into string
-  var payloadRaw = [];
+  //create firebase references
+  const firebaseRef = firebase.database().ref().child('fix');
+  const firebasePayload = firebaseRef.child('payload_raw');
+  const firebaseGateways = firebaseRef.child('metadata');
 
-  //create reference to firebase
-  const firebaseRef = firebase.database().ref().child('-LRR7ehUYNQX2v60MHAq');
-
-  //take snapshot of all the sensor data
-  firebaseRef.on('value', snap => {
-    completeDataObject.innerText = JSON.stringify(snap.val(), null, 3);
+  //display payload
+  firebasePayload.on('value', snap => {
+    payloadData.innerText = JSON.stringify(snap.val(), null, 3);
   });
 
-  firebaseRef.child('payload_raw').on('value', snap => {
-    rawObject.innerText = JSON.stringify(snap.val(), null, 3);
-    payloadRaw = snap.val();
-    var i;
-    // for loop to convert from ASCII array to string
-    for(i = 0; i < payloadRaw.length; i++) {
-      dataObject.innerText += String.fromCharCode(payloadRaw[i]);
-    }
+  //display metadata
+  firebaseGateways.on('value', snap => {
+    metaData.innerText = JSON.stringify(snap.val(), null, 3);
+  });
+
+  //display complete raw data
+  firebaseRef.on('value', snap => {
+    completeData.innerText = JSON.stringify(snap.val(), null, 3);
   });
 
 }());
