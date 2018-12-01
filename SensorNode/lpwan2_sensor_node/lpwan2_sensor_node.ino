@@ -22,6 +22,7 @@
  *******************************************************************************/
 
 // Modified to send sensor data
+// Modified to make measurements at 1s intervals
 
 #include <lmic.h>
 #include <hal/hal.h>
@@ -49,8 +50,12 @@ void os_getArtEui (u1_t* buf) { }
 void os_getDevEui (u1_t* buf) { }
 void os_getDevKey (u1_t* buf) { }
 
-static uint8_t mydata[] = "Hello, world!";
+uint8_t temperature = 0;
+uint8_t humidity = 0;
+uint8_t sensorData[3] = {0, 0, '\0'};
+        
 static osjob_t sendjob;
+static osjob_t measurejob;
 
 // DHT Sensor
 
@@ -139,20 +144,27 @@ void do_send(osjob_t* j){
     // Check if there is not a current TX/RX job running
     if (LMIC.opmode & OP_TXRXPEND) {
         Serial.println(F("OP_TXRXPEND, not sending"));
-    } else {
-        int chk = DHT.read11(DHT11_PIN);
-        delay(1000); // some delay needed, likely much less than 1s.
-        // Prepare upstream data transmission at the next possible time.
-        uint8_t temperature = (uint8_t) DHT.temperature;
-        uint8_t humidity = (uint8_t) DHT.humidity;
-        uint8_t sensorData[3] = {temperature, humidity, '\0'};
-        
-        LMIC_setTxData2(1, mydata, sizeof(mydata)-1, 0);
-        Serial.println(DHT.temperature);
-        Serial.println(DHT.humidity);
+    } else {  
+        LMIC_setTxData2(1, sensorData, sizeof(sensorData)-1, 0);
+        Serial.println(F("Data Sent:"));
+        Serial.println(temperature);
+        Serial.println(humidity);
         Serial.println(F("Packet queued"));
     }
     // Next TX is scheduled after TX_COMPLETE event.
+}
+
+void do_measure(osjob_t* j){
+  int chk = DHT.read11(DHT11_PIN);
+  delay(500);
+  temperature = (uint8_t) DHT.temperature;
+  humidity = (uint8_t) DHT.humidity;
+  sensorData[0] = temperature;
+  sensorData[1] = humidity;
+  Serial.println(temperature);
+  Serial.println(humidity);
+
+  os_setTimedCallback(j, os_getTime()+sec2osticks(1), do_measure);
 }
 
 void setup() {
@@ -215,7 +227,8 @@ void setup() {
     // Set data rate and transmit power (note: txpow seems to be ignored by the library)
     LMIC_setDrTxpow(DR_SF7,14);
 
-    // Start job
+    // Start jobs
+    do_measure(&measurejob);
     do_send(&sendjob);
 }
 
