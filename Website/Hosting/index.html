@@ -81,11 +81,24 @@
 					<div class="card mb-3">
 						<div class="card-header">
 							<i class="fas fa-chart-area"></i>
-							Sensor Data
+							Temperature & Humidity Measurements
 						</div>
 						<div class="card-footer small text-muted">Live readings from the sensors are shown in this graph below. As data is received the graph will update.</div>
 						<div class="card-body">
-							<div id="chartContainer" style = "height: 300px; width: 100%;"></div>
+							<!--<div id="chartContainer" style = "height: 300px; width: 100%;"></div>-->
+							<canvas id="weatherChart"></canvas>
+						</div>
+						<div class="card-footer small text-muted">Updated today at 11:59 PM</div>
+					</div>
+					<div class="card mb-3">
+						<div class="card-header">
+							<i class="fas fa-chart-area"></i>
+							Noise measurements
+						</div>
+						<div class="card-footer small text-muted">Live readings from the sensors are shown in this graph below. As data is received the graph will update.</div>
+						<div class="card-body">
+							<!--<div id="chartContainer" style = "height: 300px; width: 100%;"></div>-->
+							<canvas id="noiseChart"></canvas>
 						</div>
 						<div class="card-footer small text-muted">Updated today at 11:59 PM</div>
 					</div>
@@ -98,7 +111,7 @@
 						</div>
 						<div class="card-footer small text-muted">Live RSSI measurements from the gateways that received the transmitted packet of information from the Arduino.</div>
 						<div class="card-body">
-							<div id="chartContainer2" style = "height: 300px; width: 100%;"></div>
+							<canvas id="rssiChart"></canvas>
 						</div>
 						<div class="card-footer small text-muted">Updated today at 11:59 PM</div>
 					</div>
@@ -111,7 +124,7 @@
 						</div>
 						<div class="card-footer small text-muted">Live SNR measurements from the gateways that received the transmitted packet of information from the arduino.</div>
 						<div class="card-body">
-							<div id="chartContainer3" style = "height: 300px; width: 100%;"/></div>
+							<canvas id="snrChart"></canvas>
 						</div>
 						<div class="card-footer small text-muted">Updated today at 11:59 PM</div>
 					</div>
@@ -142,17 +155,17 @@
 		<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
 		<!-- Page level plugin JavaScript-->
-		<!--<script src="vendor/chart.js/Chart.min.js"></script>-->
+		<script src="vendor/chart.js/Chart.min.js"></script>
 		<!--<script src="vendor/datatables/jquery.dataTables.js"></script>-->
 		<!--<script src="vendor/datatables/dataTables.bootstrap4.js"></script>-->
 
 		<!-- Custom scripts for all pages-->
 		<script src="js/sb-admin.min.js"></script>
 
-		  <!-- Placed at the end of the document so the pages load faster -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 
   
@@ -160,6 +173,7 @@
 		<!--<script src="js/demo/datatables-demo.js"></script>-->
 		<script src="js/chart.js"></script>
 		<script src="vendor/canvas/canvasjs.min.js"></script>
+		<script src="vendor/moment/moment.min.js"></script>
 	
 	</body>
 </html>

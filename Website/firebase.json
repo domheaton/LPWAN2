@@ -1,10 +1,18 @@
 {
   "hosting": {
-    "public": "Hosting",
+    "public": "dashboard_website",
+	"rewrites": [{
+		"source": "/firebase", "function": "firebase"
+	}],
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ]
+  },
+  "functions": {
+    "predeploy": [
+      "npm --prefix functions run lint"
     ]
   }
 }
