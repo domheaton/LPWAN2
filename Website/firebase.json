@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dashboard_website",
+    "public": "Hosting",
 	"rewrites": [{
 		"source": "/firebase", "function": "firebase"
 	}],
